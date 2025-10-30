@@ -1,5 +1,6 @@
 package tests;
 
+import helpMethods.ElementsMethod;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ public class WebTableTest1 {
 
     public WebDriver driver;
 
-
+ElementsMethod elementsMethod;
     @Test
 
     public void metodaTest (){
@@ -27,11 +28,12 @@ public class WebTableTest1 {
 
         driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
+        elementsMethod=new ElementsMethod(driver);
 
         WebElement elementsMeniu = driver.findElement(By.xpath("//h5[text()='Elements']"));
 
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].click();", elementsMeniu);
+        elementsMethod.javaScriptElement(elementsMeniu);
 
         WebElement webTable = driver.findElement(By.xpath("//span[text()='Web Tables']"));
         webTable.click();
@@ -48,36 +50,38 @@ public class WebTableTest1 {
 
 // First Name
         WebElement firstNameElement = driver.findElement(By.id("firstName"));
-        String firstName = "Iulian";
-        firstNameElement.sendKeys(firstName);
-
+        String firstNameElement="Iulian";
+        elementsMethod.fillElement(firstNameElement, firstNameElement);
 // Last Name
         WebElement lastNameElement = driver.findElement(By.id("lastName"));
-        String lastName = "Roteliuc";
-        lastNameElement.sendKeys(lastName);
+        String lastNameElement="Roteliuc";
+        elementsMethod.fillElement(lastNameElement, lastNameElement);
 
 // Email
         WebElement userEmailElement = driver.findElement(By.id("userEmail"));
-        String userEmail = "roteliuc.iulian@gmail.com";
-        userEmailElement.sendKeys(userEmail);
+        String userEmail="roteliuc.iulian@gmail.com";
+        elementsMethod.fillElement(userEmailElement, userEmail);
 
 // Age
         WebElement ageElement = driver.findElement(By.id("age"));
-        String age = "31";
-        ageElement.sendKeys(age);
+        String ageElement="31";
+        elementsMethod.fillElement(ageElement, ageElement);
 
 // Salary
         WebElement salaryElement = driver.findElement(By.id("salary"));
-        String salary = "5000";
-        salaryElement.sendKeys(salary);
+        String salaryElement="5000";
+        elementsMethod.fillElement(salaryElement, salaryElement);
 
 // Department
         WebElement departmentElement = driver.findElement(By.id("department"));
-        String department = "Discogs";
-        departmentElement.sendKeys(department);
+        String department="Discogs";
+        elementsMethod.fillElement(departmentElement, "Discogs");
+
 
         WebElement submitButton = driver.findElement(By.id("submit"));
+
         submitButton.click();
+
         //Validam noua dimensiune a tabelului
         List<WebElement> continutTabelNou= driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
         Assert.assertEquals(continutTabelNou.size(),4,"Marimea tabelului nu este 4 ");
