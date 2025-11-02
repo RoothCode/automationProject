@@ -124,15 +124,8 @@ public class WebTableTest1 {
         List<WebElement> continutTabelSters= driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
         Assert.assertEquals(continutTabelSters.size(),3, "Noul tabel nu are 3 randuri");
 
-
-
-
-
-
         //driver.close();
-
     }
-
 }
 
 // Daca vrem sa identificam un element dupa text putem face asta doar cu XPath.
