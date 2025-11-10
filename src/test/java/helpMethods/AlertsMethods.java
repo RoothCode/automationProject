@@ -17,15 +17,14 @@ public class AlertsMethods {
         this.driver = driver;
     }
 
-    public void fillAlert(String text){
-        waitForAlert();
+    public void fillAlert (String text){
         Alert fourthAlert = driver.switchTo().alert();
         fourthAlert.sendKeys(text);
         fourthAlert.accept();
     }
 
     public void waitForAlert(){
-        WebDriverWait waitExplicit=new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(10));
         waitExplicit.until(ExpectedConditions.alertIsPresent());
     }
 
@@ -45,7 +44,7 @@ public class AlertsMethods {
         if (chooseAccept) {
             Assert.assertEquals(actualText, "You selected Ok");
             System.out.println("User selected OK");
-        } else  {
+        } else {
             Assert.assertEquals(actualText, "You selected Cancel");
             System.out.println("User selected Cancel");
         }
@@ -53,11 +52,10 @@ public class AlertsMethods {
 
     public void acceptAlert(boolean chooseAccept){
         Alert thirdAlert = driver.switchTo().alert();
-        if(chooseAccept) {
+        if (chooseAccept) {
             thirdAlert.accept();
         } else {
             thirdAlert.dismiss();
         }
     }
 }
-

@@ -1,19 +1,20 @@
 package tests;
 
 import helpMethods.AlertsMethods;
-import helpMethods.ElementsMethod;
+import helpMethods.ElementsMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
 
+import java.sql.Driver;
 import java.time.Duration;
 
 public class AlertTest {
-
     public WebDriver driver;
-    ElementsMethod elementsMethod;
+    ElementsMethods elementsMethods;
     AlertsMethods alertsMethods;
 
     @Test
@@ -21,35 +22,30 @@ public class AlertTest {
     public void metodaTest() {
 
         driver = new ChromeDriver();
-        elementsMethod = new ElementsMethod(driver);
-        alertsMethods = new AlertsMethods(driver);
-
         driver.get("https://demoqa.com/");
         driver.manage().window().maximize();
-
+        elementsMethods = new ElementsMethods(driver);
+        alertsMethods = new AlertsMethods(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
-        HomePage homePage=new HomePage(driver);
-        homePage.clickAlertFrameWindow();
+        WebElement alertMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
+        elementsMethods.javaScriptElement(alertMenu);
 
         WebElement tabButton = driver.findElement(By.xpath("//span[text()='Alerts']"));
-        elementsMethod.clickElement(tabButton);
+        elementsMethods.clickElement(tabButton);
 
         WebElement firstAlertElement = driver.findElement(By.id("alertButton"));
-        elementsMethod.clickElement(firstAlertElement);
-
+        elementsMethods.clickElement(firstAlertElement);
         alertsMethods.acceptAlert();
 
         WebElement secondAlert = driver.findElement(By.id("timerAlertButton"));
-        elementsMethod.clickElement(secondAlert);
+        elementsMethods.clickElement(secondAlert);
 
         alertsMethods.acceptAlert();
 
         WebElement thirdAlertElement = driver.findElement(By.id("confirmButton"));
-        elementsMethod.clickElement(thirdAlertElement);
-
-        boolean chooseAccept = true;  // pune false daca vrei Cancel
+        elementsMethods.clickElement(thirdAlertElement);
+        boolean chooseAccept = true;
         alertsMethods.acceptAlert(chooseAccept);
 
         WebElement textThirdAlert = driver.findElement(By.id("confirmResult"));
@@ -57,7 +53,8 @@ public class AlertTest {
         alertsMethods.verifyConfirmAlert(actualText, true);
 
         WebElement fourthAlertElement = driver.findElement(By.id("promtButton"));
-        elementsMethod.javaScriptElement(fourthAlertElement);
-        alertsMethods.fillAlert("Buna");
+        elementsMethods.clickElement(fourthAlertElement);
+        alertsMethods.fillAlert("Buna ziua");
+
     }
 }
