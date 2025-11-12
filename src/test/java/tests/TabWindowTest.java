@@ -1,5 +1,4 @@
 package tests;
-
 import helpMethods.ElementsMethods;
 import helpMethods.TabMethods;
 import org.openqa.selenium.By;
@@ -9,12 +8,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
-
+import sharedData.ShareData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabWindowTest {
-    public WebDriver driver;
+public class TabWindowTest extends ShareData {
 
     ElementsMethods elementsMethods;
     TabMethods tabMethods;
@@ -23,9 +21,6 @@ public class TabWindowTest {
 
     public void metodaTest() {
 
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
         elementsMethods = new ElementsMethods(driver);
         tabMethods = new TabMethods(driver);
 

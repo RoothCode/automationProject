@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class WebTablesPage {
+public class WebTablesPage extends BasePage {
     public WebDriver driver;
     public ElementsMethods elementsMethod;
 

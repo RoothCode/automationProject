@@ -8,13 +8,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.http.Message;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sharedData.ShareData;
 
 import java.util.Collections;
 import java.util.List;
 
-public class WebTableTest {
+public class WebTableTest extends ShareData {
 
-    public WebDriver driver;
 
     @Test
 
@@ -22,13 +22,10 @@ public class WebTableTest {
 
         //Deschidem un browser;
 
-        driver= new ChromeDriver();
+
         JavascriptExecutor js = (JavascriptExecutor)driver;
 
         //Accesam un URL;
-
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
 
         WebElement elementsMenu = driver.findElement(By.xpath("//h5[text()='Elements']"));
         js.executeScript("arguments[0].click();", elementsMenu);

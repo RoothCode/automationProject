@@ -1,5 +1,4 @@
 package pages;
-
 import helpMethods.ElementsMethods;
 import helpMethods.FrameMethods;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class FramesPage {
+public class FramesPage extends BasePage {
 
     public WebDriver driver;
     public ElementsMethods elementsMethods;

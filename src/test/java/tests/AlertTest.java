@@ -8,12 +8,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sharedData.ShareData;
 
 import java.sql.Driver;
 import java.time.Duration;
 
-public class AlertTest {
-    public WebDriver driver;
+public class AlertTest extends ShareData {
+
     ElementsMethods elementsMethods;
     AlertsMethods alertsMethods;
 
@@ -21,12 +22,9 @@ public class AlertTest {
 
     public void metodaTest() {
 
-        driver = new ChromeDriver();
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
         elementsMethods = new ElementsMethods(driver);
         alertsMethods = new AlertsMethods(driver);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 
         WebElement alertMenu = driver.findElement(By.xpath("//h5[text()='Alerts, Frame & Windows']"));
         elementsMethods.javaScriptElement(alertMenu);

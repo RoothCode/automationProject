@@ -1,32 +1,26 @@
 package tests;
-
 import helpMethods.ElementsMethods;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+import sharedData.ShareData;
 import javax.swing.text.Element;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-public class PracticeForms {
+public class PracticeForms extends ShareData {
 
-    public WebDriver driver;
     ElementsMethods elementsMethods;
 
     @Test
 
     public void metodaTest() {
 
-        driver = new ChromeDriver();
         elementsMethods = new ElementsMethods(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        driver.get("https://demoqa.com/");
-        driver.manage().window().maximize();
 
         WebElement formsMenu = driver.findElement(By.xpath("//h5[text()='Forms']"));
         elementsMethods.javaScriptElement(formsMenu);
@@ -61,13 +55,14 @@ public class PracticeForms {
 
         String dayValue = "15";
         List<WebElement> daysList = driver.findElements(By.xpath("//div[contains(@class,'react-datepicker__day--0') and not(contains(@class,'outside-month'))]"));
-        for (int index = 0; index < daysList.size(); index++){ ;
-            if (daysList.get(index).getText().equals(dayValue)){ ;
+        for (int index = 0; index < daysList.size(); index++) {
+            ;
+            if (daysList.get(index).getText().equals(dayValue)) {
+                ;
                 daysList.get(index).click();
                 break;
             }
         }
-
 
 
 //        WebElement currentAddressElement = driver.findElement(By.id("currentAddress"));

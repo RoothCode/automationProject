@@ -51,7 +51,6 @@ public class AlertsWindows {
 
         WebElement secondAlert = driver.findElement(By.id("timerAlertButton"));
         elementsMethods.javaScriptElement(secondAlert);
-
         alertsMethods.acceptAlert();
 
         WebElement thirdAlertElement = driver.findElement(By.id("confirmButton"));
